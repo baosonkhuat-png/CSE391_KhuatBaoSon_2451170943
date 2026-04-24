@@ -56,3 +56,16 @@ Câu A4 (Tài liệu tham chiếu: tuan_1_html5/05_tables_hyperlinks.md)
  + Sai mục đích ngữ nghĩa vì table chỉ dùng để hiển thị dữ liệu dạng bảng
  + Ảnh hưởng đến hiệu năng vì phải render toàn bộ nội dung trong bảng rồi mới hiển thị
  + Khó bảo trì vì có rất nhiều thẻ <tr>, <td> khiến việc đọc và sửa lỗi rất rối
+
+Câu C3
+Lỗi 1: Dòng 1 - Trong khai báo <!DOCTYPE> thiếu html - Đổi thành <DOCTYPE html>
+Lỗi 2: Dòng 2 - Thiếu thuộc tính 'lang' trong thẻ <html> - Thêm lang="vi"
+Lỗi 3: Dòng 4 - Thẻ <title> chưa đóng - Thêm </title> sau nội dung
+Lỗi 4: Dòng 5 - Giá trị 'utf8' trong thuộc tính 'charset' viết sai và thiếu thẻ meta viewport - Đổi thành <meta charset="UTF-8"> và thêm <meta name="viewport"...>
+Lỗi 5: Dòng 8 - Thẻ <h1> đóng bằng thẻ <h1> là sai - Sửa thẻ đóng thành </h1>
+Lỗi 6: Dòng 12 - Thẻ <a> đóng bằng thẻ <a> là sai - Sửa thẻ đóng thành </a>
+Lỗi 7: Dòng 20 - Thẻ <img> thiếu dấu " " cho thuộc tính src - Sửa thành <img src="iphone.jpg"> và có thể thêm thuộc tính alt=" "
+Lỗi 8: Dòng 22 - Thẻ <p> và <b> sai thứ tự đóng thẻ - Thẻ ở trong đóng trước <p><b> </b><p>
+Lỗi 9: Dòng 27-30 - Bảng <table> thiếu cấu trúc <thead>, <tbody> - Thêm <thead> và <tbody>, đổi <td> thành <th>
+Lỗi 10: Dòng 40 - Một trang chỉ có 1 <main> - Đổi thẻ <main> thứ 2 thành <aside>
+Lỗi 11: Dòng 45 - Thẻ <footer> chưa đóng thẻ <p> bên trong - Thêm </p> trước khi đóng thẻ ngoài
