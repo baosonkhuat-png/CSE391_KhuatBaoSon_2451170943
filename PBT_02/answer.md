@@ -77,3 +77,65 @@ Lí do HTML không thể validate confirm password:
   - Mỗi input element được validate riêng lẻ theo các thuộc tính của nó (required, minlength, pattern, type...)
   - Không có cơ chế nào trong HTML để so sánh giá trị giữa 2 input khác nhau
   - HTML không thể tham chiếu giá trị của input này để so sánh với input khác
+
+Câu C1:
+Lỗi 1: Dòng 2 — Input "Tên" không có <label for="...">, vi phạm accessibility
+Sửa:
+<label for="name">Tên:</label> 
+<input type="text" id="name" name="name" required>
+
+Lỗi 2: Dòng 4 — Input email không có <label>, chỉ dùng placeholder nên không đảm bảo accessibility
+Sửa:
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" placeholder="Email của bạn" required>
+
+Lỗi 3: Dòng 6 — Input mật khẩu không có <label>
+Sửa:
+<label for="password">Mật khẩu:</label>
+<input type="password" id="password" name="password" required>
+
+Lỗi 4: Dòng 7 — Input nhập lại mật khẩu không có <label>
+Sửa:
+<label for="confirm-password">Nhập lại mật khẩu:</label>
+<input type="password" id="confirm-password" name="confirm-password" required>
+
+Lỗi 5: Dòng 9 — Input số điện thoại dùng type="text" thay vì type="tel"
+Sửa:
+<label for="phone">Phone:</label>
+<input type="tel" id="phone" name="phone" value="0901234567">
+
+Lỗi 6: Dòng 11 — <select> không có <label> liên kết
+Sửa:
+<label for="city">Thành phố:</label>
+<select id="city" name="city">
+    <option>Hà Nội</option>
+    <option>TP.HCM</option>
+</select>
+
+Lỗi 7: Dòng 16 — Checkbox điều khoản bị thiếu <input type="checkbox">
+Sửa:
+<label>
+    <input type="checkbox" name="terms" required>
+    Tôi đồng ý điều khoản
+</label>
+
+Lỗi 8: Dòng 19 — Nút submit dùng input type="submit" kém semantic hơn <button>
+Sửa:
+<button type="submit">Gửi</button>
+
+Câu C2:
+1. Regex cho các trường:
+   - CMND/CCCD: <input type="text" name="id-number" pattern="^\d{12}$" required>  (đúng 12 chữ số)
+   - Số tài khoản: <input type="text" name="account-number" pattern="^\d{10,15}$" required>  (10-15 chữ số)
+2. HTML5 validation không đủ an toàn cho ứng dụng ngân hàng.
+   - HTML5 chỉ kiểm tra phía trình duyệt, vì vậy người dùng hoặc hacker có thể dễ dàng bỏ qua bằng cách tắt JavaScript, chỉnh sửa DOM, dùng DevTools hoặc gửi request trực tiếp
+   - Với ngân hàng, bắt buộc phải validate phía Backend vì backend mới là nguồn tin cậy, kiểm soát được dữ liệu thực và bảo vệ hệ thống với database
+
+3. Ba loại validation mà HTML5 không thể làm được (dùng JavaScript):
+   - So sánh giữa các trường: xác nhận PIN/password, xác thực hai lần nhập giống nhau.
+   - Kiểm tra nghiệp vụ/async: kiểm tra tài khoản/email đã tồn tại, kiểm tra số dư, kiểm tra số tài khoản hợp lệ với cơ chế checksum hoặc xác thực bên hệ thống ngân hàng.
+   - Logic phức tạp: tính tuổi từ ngày sinh, kiểm tra ngày giao dịch hợp lệ, kiểm tra định dạng đặc thù không thể biểu diễn bằng regex đơn giản.
+
+4. Hai rủi ro bảo mật khi chỉ validate phía Frontend và không validate Backend:
+   - Kẻ tấn công có thể gửi dữ liệu giả mạo trực tiếp đến server, dẫn đến tạo tài khoản giả, vượt qua kiểm tra bảo mật và có thể gây ra SQL injection/XSS nếu backend không kiểm tra kỹ.
+   - Dữ liệu không hợp lệ hoặc độc hại có thể đi vào hệ thống, làm hỏng logic ứng dụng, gây lỗi nghiệp vụ hoặc lộ thông tin nhạy cảm, vì frontend không thể được xem là đáng tin cậy.
