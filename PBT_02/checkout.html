@@ -4,122 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - Đặt hàng</title>
-    <!-- <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0 16px 32px;
-            line-height: 1.5;
-            background: #f7f7f7;
-            color: #222;
-        }
-        header, main {
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        header {
-            padding: 24px 0 16px;
-        }
-        h1, h2, legend {
-            color: #2c3e50;
-        }
-        form {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 18px rgba(0,0,0,.08);
-            padding: 24px;
-        }
-        fieldset {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            padding: 18px 20px;
-        }
-        legend {
-            padding: 0 8px;
-            font-weight: 700;
-        }
-        label {
-            display: block;
-            margin-bottom: 12px;
-        }
-        label span {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 12px 0 8px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px 12px;
-            text-align: left;
-        }
-        th {
-            background: #f0f8ff;
-        }
-        tfoot td {
-            font-weight: 700;
-            background: #fafafa;
-        }
-        .summary {
-            margin: 12px 0 0;
-            font-size: 1.1rem;
-        }
-        .inline-group {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-        .inline-group label {
-            flex: 1 1 220px;
-        }
-        .inline-control {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
-        }
-        .control-note {
-            display: block;
-            margin-top: -10px;
-            margin-bottom: 10px;
-            color: #555;
-            font-size: 0.95rem;
-        }
-        button[type="submit"] {
-            display: block;
-            margin: 24px auto 0;
-            padding: 14px 28px;
-            font-size: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: #2185d0;
-            color: white;
-            cursor: pointer;
-        }
-        button[type="submit"]:hover {
-            background: #166bb5;
-        }
-        meter {
-            width: 100%;
-            height: 24px;
-        }
-    </style> -->
 </head>
 <body>
     <header>
@@ -209,7 +93,7 @@
                         <span>Mã giảm giá</span>
                         <input type="text" id="discount-code" name="discount-code" pattern="^SALE\d{4}$" placeholder="SALE2026">
                     </label>
-                    <span class="control-note">Mã giảm giá chỉ chấp nhận format SALE + 4 chữ số.</span>
+                    <span class="control-note">(Mã giảm giá chỉ chấp nhận format SALE + 4 chữ số)</span>
 
                     <label for="note">
                         <span>Ghi chú</span>
@@ -257,26 +141,26 @@
                     </label>
                     <label for="delivery-days">
                         <span>Thời gian giao hàng (số ngày)</span>
-                        <input type="range" id="delivery-days" name="delivery-days" min="1" max="7" step="1" value="1">
-                        <div>Thời gian dự kiến: <output name="delivery-days-output">3</output> ngày</div>
                     </label>
+                    <input type="range" id="delivery-days" name="delivery-days" min="1" max="7" step="1" value="3" aria-describedby="delivery-days-desc">
+                    <p id="delivery-days-desc">Thời gian dự kiến: <output id="delivery-days-output" name="delivery-days-output">3</output> ngày</p>
                 </fieldset>
             </section>
 
             <section>
                 <h2>Điểm tích lũy</h2>
-                <progress value="70" min="0" max="100">70%</progress>
+                <progress value="70" max="100">70%</progress>
                 <p>Điểm tích lũy hiện tại: <strong>70%</strong></p>
             </section>
 
             <button type="submit" aria-label="Xác nhận đặt hàng">Xác nhận đặt hàng</button>
         </form>
     </main>
-
+<!-- 
     <script>
         const dateInput = document.getElementById('delivery-date');
         const deliveryDays = document.getElementById('delivery-days');
-        const deliveryOutput = document.querySelector('output[name="delivery-days-output"]');
+        const deliveryOutput = document.getElementById('delivery-days-output');
         const today = new Date();
         today.setDate(today.getDate() + 1);
         dateInput.min = today.toISOString().split('T')[0];
@@ -284,6 +168,6 @@
         deliveryDays.addEventListener('input', () => {
             deliveryOutput.textContent = deliveryDays.value;
         });
-    </script>
+    </script> -->
 </body>
 </html>
