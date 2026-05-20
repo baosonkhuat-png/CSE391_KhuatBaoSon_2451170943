@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Đặt hàng</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0 16px 32px;
+            line-height: 1.5;
+            background: #f7f7f7;
+            color: #222;
+        }
+        header, main {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        header {
+            padding: 24px 0 16px;
+        }
+        h1, h2, legend {
+            color: #2c3e50;
+        }
+        form {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 18px rgba(0,0,0,.08);
+            padding: 24px;
+        }
+        fieldset {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 18px 20px;
+        }
+        legend {
+            padding: 0 8px;
+            font-weight: 700;
+        }
+        label {
+            display: block;
+            margin-bottom: 12px;
+        }
+        label span {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0 8px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        th {
+            background: #f0f8ff;
+        }
+        tfoot td {
+            font-weight: 700;
+            background: #fafafa;
+        }
+        .summary {
+            margin: 12px 0 0;
+            font-size: 1.1rem;
+        }
+        .inline-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .inline-group label {
+            flex: 1 1 220px;
+        }
+        .inline-control {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .control-note {
+            display: block;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+        button[type="submit"] {
+            display: block;
+            margin: 24px auto 0;
+            padding: 14px 28px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #2185d0;
+            color: white;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background: #166bb5;
+        }
+        meter {
+            width: 100%;
+            height: 24px;
+        }
+    </style> -->
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+        <p>Điền thông tin đặt hàng của bạn để hoàn tất giao dịch.</p>
+    </header>
+
+    <main>
+        <form action="#" method="post">
+            <section>
+                <h2>Giỏ hàng</h2>
+                <label for="product-search">
+                    <span>Tìm kiếm sản phẩm</span>
+                    <input type="text" id="product-search" name="product-search" list="product-list" placeholder="Nhập tên sản phẩm...">
+                </label>
+                <datalist id="product-list">
+                    <option value="Laptop Gaming"></option>
+                    <option value="Bàn phím cơ"></option>
+                    <option value="Chuột không dây"></option>
+                    <option value="Màn hình 4K"></option>
+                    <option value="Tai nghe Bluetooth"></option>
+                </datalist>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>Số lượng</th>
+                            <th>Thành tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Laptop Gaming</td>
+                            <td>30.000.000đ</td>
+                            <td>1</td>
+                            <td>30.000.000đ</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Bàn phím cơ</td>
+                            <td>1.500.000đ</td>
+                            <td>1</td>
+                            <td>1.500.000đ</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Chuột không dây</td>
+                            <td>1.000.000đ</td>
+                            <td>1</td>
+                            <td>1.000.000đ</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Tổng cộng</td>
+                            <td>32.500.000đ</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="summary">
+                    Tổng tiền đơn hàng: <output name="order-total">32.500.000đ</output>
+                </div>
+            </section>
+
+            <section>
+                <h2>Phương thức thanh toán</h2>
+                <fieldset>
+                    <legend>Chọn phương thức</legend>
+                    <label class="inline-control">
+                        <input type="radio" name="payment-method" value="cod" required>
+                        COD
+                    </label>
+                    <label class="inline-control">
+                        <input type="radio" name="payment-method" value="bank-transfer" required>
+                        Chuyển khoản
+                    </label>
+                    <label class="inline-control">
+                        <input type="radio" name="payment-method" value="e-wallet" required>
+                        Ví điện tử
+                    </label>
+
+                    <label for="discount-code">
+                        <span>Mã giảm giá</span>
+                        <input type="text" id="discount-code" name="discount-code" pattern="^SALE\d{4}$" placeholder="SALE2026">
+                    </label>
+                    <span class="control-note">Mã giảm giá chỉ chấp nhận format SALE + 4 chữ số.</span>
+
+                    <label for="note">
+                        <span>Ghi chú</span>
+                        <textarea id="note" name="note" placeholder="Ghi chú thêm (tùy chọn)"></textarea>
+                    </label>
+                </fieldset>
+            </section>
+
+            <section>
+                <h2>Thông tin giao hàng</h2>
+                <fieldset>
+                    <legend>Thông tin liên hệ</legend>
+                    <label for="fullname">
+                        <span>Họ và tên</span>
+                        <input type="text" id="fullname" name="fullname" required placeholder="Nguyễn Văn A">
+                    </label>
+                    <label for="email">
+                        <span>Email</span>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com">
+                    </label>
+                    <label for="phone">
+                        <span>Số điện thoại</span>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{9,11}" required placeholder="0901234567">
+                    </label>
+                    <label for="address">
+                        <span>Địa chỉ giao hàng</span>
+                        <input type="text" id="address" name="address" required placeholder="Số nhà, đường, phường/xã, quận/huyện">
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Chi tiết giao hàng</legend>
+                    <label for="delivery-date">
+                        <span>Ngày giao hàng mong muốn</span>
+                        <input type="date" id="delivery-date" name="delivery-date" required>
+                    </label>
+                    <label for="time-slot">
+                        <span>Khung giờ</span>
+                        <select id="time-slot" name="time-slot" required>
+                            <option value="">Chọn khung giờ</option>
+                            <option value="morning">Sáng 8-12h</option>
+                            <option value="afternoon">Chiều 14-18h</option>
+                            <option value="evening">Tối 18-21h</option>
+                        </select>
+                    </label>
+                    <label for="delivery-days">
+                        <span>Thời gian giao hàng (số ngày)</span>
+                        <input type="range" id="delivery-days" name="delivery-days" min="1" max="7" step="1" value="1">
+                        <div>Thời gian dự kiến: <output name="delivery-days-output">3</output> ngày</div>
+                    </label>
+                </fieldset>
+            </section>
+
+            <section>
+                <h2>Điểm tích lũy</h2>
+                <progress value="70" min="0" max="100">70%</progress>
+                <p>Điểm tích lũy hiện tại: <strong>70%</strong></p>
+            </section>
+
+            <button type="submit" aria-label="Xác nhận đặt hàng">Xác nhận đặt hàng</button>
+        </form>
+    </main>
+
+    <script>
+        const dateInput = document.getElementById('delivery-date');
+        const deliveryDays = document.getElementById('delivery-days');
+        const deliveryOutput = document.querySelector('output[name="delivery-days-output"]');
+        const today = new Date();
+        today.setDate(today.getDate() + 1);
+        dateInput.min = today.toISOString().split('T')[0];
+        deliveryOutput.textContent = deliveryDays.value;
+        deliveryDays.addEventListener('input', () => {
+            deliveryOutput.textContent = deliveryDays.value;
+        });
+    </script>
+</body>
+</html>
