@@ -27,3 +27,60 @@ Câu A2:
 6. article > p                  → Chọn: cả 4 thẻ p nằm trực tiếp trong 2 thẻ article: 25.990.000đ, Mô tả sản phẩm..., 45.990.000đ, Mô tả sản phẩm...
 7. a[href="/"]                  → Chọn: Home
 8. .top-bar.dark h1              → Chọn: ShopTLU
+
+Câu A3: 
+/* Trường hợp 1: content-box (mặc định) */
+.box-1 {
+    width: 400px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+}
+→ Chiều rộng hiển thị = 450px
+→ Không gian chiếm trên trang = 470px
+
+/* Trường hợp 2: border-box */
+.box-2 {
+    box-sizing: border-box;
+    width: 400px;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+}
+→ Chiều rộng hiển thị = 400px
+→ Kích thước content thực tế = 350px
+→ Không gian chiếm trên trang = 420px
+
+/* Trường hợp 3: Margin collapse */
+.box-a { margin-bottom: 25px; }
+.box-b { margin-top: 40px; }
+→ Khoảng cách giữa box-a và box-b = 40px
+→ Giải thích tại sao KHÔNG PHẢI 65px: Khi hai phần tử khối (block elements) xếp chồng dọc sát nhau, hiện tượng Margin Collapse (đổ sập lề dọc) sẽ xảy ra. Thay vì cộng dồn lề (25px + 40px), trình duyệt sẽ so sánh và lấy giá trị lề lớn nhất là 40px làm khoảng cách chung giữa hai hộp
+
+- Nâng cao: Khoảng cách là 30px
+→ Giải thích: Theo đặc tả CSS, khi có sự kết hợp giữa lề dương (40px) và lề âm (-10px), khoảng cách thực tế sẽ là kết quả của phép cộng đại số giữa lề dương lớn nhất và lề âm nhỏ nhất: 40px + (-10px) = 30px
+
+Câu A4:
+1. Tính specificity score (ID, Class, Element):
+Rule A (p): Score = (0, 0, 1) (1 thẻ element)
+Rule B (.price): Score = (0, 1, 0) (1 class)
+Rule C (#main-price): Score = (1, 0, 0) (1 ID)
+Rule D (p.price): Score = (0, 1, 1) (1 class + 1 element)
+
+2. Kết quả hiển thị:
+Element sẽ có màu đỏ (red)
+→ Giải thích: Rule C sở hữu ID selector nên có điểm độ ưu tiên cao nhất (1, 0, 0)
+
+3. Nếu thêm Inline Style (style="color: orange;"):
+Element sẽ đổi sang màu cam (orange) vì Inline Style có độ ưu tiên vượt trội hơn
+
+4. Nếu Rule A thêm !important:
+Element sẽ đổi sang màu đen (black)
+→ Giải thích: Từ khóa !important là một cơ chế phá vỡ mọi quy tắc tính điểm độ ưu tiên thông thường, nó đè lên cả Inline Style để ép buộc thuộc tính đó được áp dụng.
+
+Câu B1:
+Các loại selector đã dùng:
+- Element selector: body, header, table
+- Class selector: .active
+- Descendant selector: nav a, main p
+- Pseudo-class selector: :hover, :nth-child(even)
