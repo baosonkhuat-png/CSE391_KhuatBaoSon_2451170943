@@ -94,63 +94,60 @@ Giải thích sự khác biệt:
 - content-box(mặc định): Width chỉ tính phần chứa nội dung. Padding và border được cộng thêm vào kích thước cuối cùng
 - border-box: Width bao gồm cả padding + border (không bao gồm margin)
 
+Câu B3:
+1. Liệt kê 10 rules
+*{
+    color: black;
+}
+→ Specificity: 0,0,0
 
-Container: 1000px (box-sizing: content-box - mặc định)
+p{
+    color: red;
+}
+→ Specificity: 0,0,1
 
-┌─────────────────────────────────────────────┐
-│ Left(250px)  Center(500px)   Right(250px)   │
-│ +padding15px +padding20px    +padding15px   │
-└─────────────────────────────────────────────┘
+body p{
+    color: blue;
+}
+→ Specificity: 0,0,2
 
-Tính toán chiều rộng mỗi cột:
-├─ Left: 250px (width) + 15px×2 (padding) = 280px
-├─ Center: 500px (width) + 20px×2 (padding) = 540px
-└─ Right: 250px (width) + 15px×2 (padding) = 280px
-────────────────────────────────────────────────
-   TỔNG = 280 + 540 + 280 = 1100px
+.text{
+    color: green;
+}
+→ Specificity: 0,1,0
 
-Vấn đề: TỔNG > 1000px (vượt 100px!)
-Kết quả: Cột phải bị tràn xuống dòng hoặc bị cắt ra ngoài container
-```
+p text{
+    color: orange;
+}
+→ Specificity: 0,1,1
 
-**[Chụp screenshot kết quả Part 2a - overflow]**
+.text.highlight{
+    color: purple;
+}
+→ Specificity: 0,2,0
 
----
+p .text.highlight{
+    color: brown;
+}
+→ Specificity: 0,2,1
 
-### Tình huống 2: CÓ dùng border-box (Fix)
+#demo{
+    color: pink;
+}
+→ Specificity: 1,0,0
 
-```
-Container: 1000px
+p#demo{
+    color: cyan;
+}
+→ Specificity: 1,0,1
 
-┌─────────────────────────────────────────────┐
-│ Left(250px)  Center(500px)   Right(250px)   │
-│ includes    includes         includes       │
-│ padding     padding          padding        │
-└─────────────────────────────────────────────┘
+p#demo.text.highlight{
+    color: magenta;
+}
+→ Specificity: 1,2,1
 
-Tính toán chiều rộng mỗi cột (box-sizing: border-box):
-├─ Left: 250px (bao gồm padding 15px)
-├─ Center: 500px (bao gồm padding 20px)
-└─ Right: 250px (bao gồm padding 15px)
-────────────────────────────────────────────────
-   TỔNG = 250 + 500 + 250 = 1000px
+2. Element cuối hiển thị màu magenta. Vì rule số 10 có độ ưu tiên cao nhất với specificity score là 1,2,1
 
-Kết quả: KHỚP ĐÚNG! 3 cột nằm gọn trong container
-```
+3. ![alt text](screenshots/specificityB3.png)
 
-**[Chụp screenshot kết quả Part 2b - khớp đúng]**
-
----
-
-## Kết luận chung:
-
-`box-sizing: border-box` là **tiêu chuẩn vàng** trong layout modern CSS vì:
-1. **Dễ tính toán:** Chiều rộng cuối cùng = width (được set)
-2. **Dự đoán được:** Không phải lo padding/border làm thay đổi kích thước
-3. **Layout chính xác:** Multi-column layout, grid layout hoạt động chính xác hơn
-4. **Best practice:** Hầu hết CSS reset hiện đại đều mặc định áp dụng cho tất cả element:
-   ```css
-   * {
-       box-sizing: border-box;
-   }
-   ```
+4. Kết quả không thay đổi. Vì theo cơ chế của trình duyệt, các quy tắc so sánh điểm specificity luôn luôn được đặt lên hàng đầu. Quy tắc nào có điểm cao hơn sẽ giành chiến thắng tuyệt đối, thứ tự xuất hiện trước hay sau trong file CSS chỉ có ý nghĩa khi hai quy tắc có điểm specificity hoàn toàn bằng nhau
