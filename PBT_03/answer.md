@@ -151,3 +151,52 @@ p#demo.text.highlight{
 3. ![alt text](screenshots/specificityB3.png)
 
 4. Kết quả không thay đổi. Vì theo cơ chế của trình duyệt, các quy tắc so sánh điểm specificity luôn luôn được đặt lên hàng đầu. Quy tắc nào có điểm cao hơn sẽ giành chiến thắng tuyệt đối, thứ tự xuất hiện trước hay sau trong file CSS chỉ có ý nghĩa khi hai quy tắc có điểm specificity hoàn toàn bằng nhau
+
+Câu C1:
+1. Chiều rộng thực tế:
+ - Sidebar thực tế = 300px + 2x20px + 2x1px = 342px
+ - Content thực tế = 660px + 2x30px + 2x1px = 722px
+ - Tổng thực tế = 342 + 722 = 1064px > 960px
+
+2. Giải thích:
+ - Trong chế độ default box-sizing: content-box, giá trị width chỉ tính phần nội dung
+ - Padding và border được cộng thêm vào chiều rộng thực tế của phần tử
+ - Khi sidebar + content được đặt cùng float: left trong container 960px, tổng 1064px vượt quá chiều rộng container và content bị đẩy xuống dòng mới
+
+3. Hai cách sửa:
+ - Dùng border-box:
+   + Áp dụng box-sizing: border-box cho sidebar và content
+   + Khi đó width 300px và 660px đã bao gồm padding + border
+   + Kết quả: tổng width = 960px đúng bằng container
+ - Không dùng border-box:
+   + Giảm width của sidebar và content để tổng chiều rộng thực tế bằng 960px
+   + Ví dụ: sidebar width = 258px (thực tế 300px), content width = 598px (thực tế 660px)
+   + Kết quả: tổng thực tế = 960px, layout nằm cạnh nhau
+
+Câu C2:
+1. "Sản phẩm A" (h2): font-size = 20px, color = green
+2. "Mô tả sản phẩm" (p trong card featured): color = blue
+3. "Sản phẩm B" (h2): font-size = 20px, color = blue
+4. "Mô tả sản phẩm B" (p.highlight): color = green
+
+→ Giải thích:
+ - Font-size:
+  + body có font-size 16px nhưng .container gán 14px cho tất cả con
+  + .card .title gán font-size: 20px cho thẻ h2.title, nên cả hai tiêu đề đều là 20px
+
+ - Color của "Sản phẩm A":
+  + .card đặt color blue cho nội dung card
+  + #featured .title muốn đặt color red cho tiêu đề trong #featured
+  + Nhưng .highlight có color: green !important, nên nó thắng mọi quy tắc không có !important
+
+ - Color của "Mô tả sản phẩm":
+  + .card p gán color: inherit, nên p kế thừa màu từ .card là blue
+  + Nó không bị ảnh hưởng bởi #featured .title vì rule đó chỉ áp dụng cho tiêu đề
+
+ - Color của "Sản phẩm B":
+  + h2.title nằm trong .card nên kế thừa màu blue từ .card
+  + Không có rule khác ưu tiên hơn trừ .highlight, nhưng tiêu đề B không có class đó
+
+ - Color của "Mô tả sản phẩm B":
+  + p.highlight có rule .highlight { color: green !important; }
+  + !important phá vỡ cascade thông thường và áp dụng màu green
