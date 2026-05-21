@@ -84,3 +84,73 @@ Các loại selector đã dùng:
 - Class selector: .active
 - Descendant selector: nav a, main p
 - Pseudo-class selector: :hover, :nth-child(even)
+
+Câu B2:
+1. Phần 1
+- Hộp 1 (content-box): Chiều rộng thực tế = 300px width + 40px padding + 10px border = 350px
+- Hộp 2 (border-box): Chiều rộng thực tế = 300px width
+
+Giải thích sự khác biệt:
+- content-box(mặc định): Width chỉ tính phần chứa nội dung. Padding và border được cộng thêm vào kích thước cuối cùng
+- border-box: Width bao gồm cả padding + border (không bao gồm margin)
+
+
+Container: 1000px (box-sizing: content-box - mặc định)
+
+┌─────────────────────────────────────────────┐
+│ Left(250px)  Center(500px)   Right(250px)   │
+│ +padding15px +padding20px    +padding15px   │
+└─────────────────────────────────────────────┘
+
+Tính toán chiều rộng mỗi cột:
+├─ Left: 250px (width) + 15px×2 (padding) = 280px
+├─ Center: 500px (width) + 20px×2 (padding) = 540px
+└─ Right: 250px (width) + 15px×2 (padding) = 280px
+────────────────────────────────────────────────
+   TỔNG = 280 + 540 + 280 = 1100px
+
+Vấn đề: TỔNG > 1000px (vượt 100px!)
+Kết quả: Cột phải bị tràn xuống dòng hoặc bị cắt ra ngoài container
+```
+
+**[Chụp screenshot kết quả Part 2a - overflow]**
+
+---
+
+### Tình huống 2: CÓ dùng border-box (Fix)
+
+```
+Container: 1000px
+
+┌─────────────────────────────────────────────┐
+│ Left(250px)  Center(500px)   Right(250px)   │
+│ includes    includes         includes       │
+│ padding     padding          padding        │
+└─────────────────────────────────────────────┘
+
+Tính toán chiều rộng mỗi cột (box-sizing: border-box):
+├─ Left: 250px (bao gồm padding 15px)
+├─ Center: 500px (bao gồm padding 20px)
+└─ Right: 250px (bao gồm padding 15px)
+────────────────────────────────────────────────
+   TỔNG = 250 + 500 + 250 = 1000px
+
+Kết quả: KHỚP ĐÚNG! 3 cột nằm gọn trong container
+```
+
+**[Chụp screenshot kết quả Part 2b - khớp đúng]**
+
+---
+
+## Kết luận chung:
+
+`box-sizing: border-box` là **tiêu chuẩn vàng** trong layout modern CSS vì:
+1. **Dễ tính toán:** Chiều rộng cuối cùng = width (được set)
+2. **Dự đoán được:** Không phải lo padding/border làm thay đổi kích thước
+3. **Layout chính xác:** Multi-column layout, grid layout hoạt động chính xác hơn
+4. **Best practice:** Hầu hết CSS reset hiện đại đều mặc định áp dụng cho tất cả element:
+   ```css
+   * {
+       box-sizing: border-box;
+   }
+   ```

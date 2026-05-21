@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model Lab - Content-box vs Border-box</title>
+    <link rel="stylesheet" href="css/boxmodel.css">
+</head>
+<body>
+    <div id="box-1">
+        <strong>Hộp 1 (content-box)</strong>
+    </div>
+    
+    <div id="box-2">
+        <strong>Hộp 2 (border-box)</strong>
+    </div>
+    
+    <div class="container-3col without-border-box">
+        <div class="col-left">
+            <strong>Cột trái (sidebar): </strong><br>
+            250px + padding 15px
+        </div>
+        <div class="col-center">
+            <strong>Cột giữa (content): </strong><br>
+            500px + padding 20px
+        </div>
+        <div class="col-right">
+            <strong>Cột phải (ads): </strong><br>
+            250px + padding 15px
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div class="container-3col with-border-box">
+        <div class="col-left" style="box-sizing: border-box;">
+            <strong>Cột trái (sidebar)</strong><br>
+            250px
+        </div>
+        <div class="col-center" style="box-sizing: border-box;">
+            <strong>Cột giữa (content)</strong><br>
+            500px
+        </div>
+        <div class="col-right" style="box-sizing: border-box;">
+            <strong>Cột phải (ads)</strong><br>
+            250px
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>
