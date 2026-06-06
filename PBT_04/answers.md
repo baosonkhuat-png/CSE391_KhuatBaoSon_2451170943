@@ -29,11 +29,11 @@ Câu A2
 
 3. Trường hợp 3
 - `.container { display: flex; justify-content: space-between; align-items: center; }`
-- Kết quả: 3 item nằm trên 1 hàng, cách đều nhau và vertical center
+- Kết quả: 3 item trên 1 hàng, cách đều nhau
 
 4. Trường hợp 4
 - `.container { display: grid; grid-template-columns: 200px 1fr 200px; gap: 20px; }`
-- Kết quả: 3 item trên 1 hàng, lần lượt vào 3 cột
+- Kết quả: 3 item trên 1 hàng, cột 1 + cột 3 = 200px, cột 2 = phần còn lại
 
 5. Trường hợp 5
 - `.container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }`
