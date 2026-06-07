@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap E-Commerce Landing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-q2kPqWFJHk4tBTB0VdRdI8MUeNE8gZqMoJy+kM7H3Rzr0pH8FwjL1iK2OqYk6ax9" crossorigin="anonymous">
+  <style>
+    .hero-slide { min-height: 70vh; background-size: cover; background-position: center; }
+    .hero-overlay { background: rgba(0,0,0,.45); }
+    .footer-bg { background-color: #f8f9fa; }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">ShopWave</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <form class="d-flex me-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+        <a class="btn btn-outline-secondary d-flex align-items-center" href="#cart">
+          <span class="me-2">Cart</span>
+          <span class="badge bg-danger">3</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="carousel slide" id="heroCarousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="hero-slide d-flex align-items-center hero-overlay" style="background-image:url('https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1500&q=80');">
+          <div class="container text-white">
+            <div class="row">
+              <div class="col-lg-7">
+                <h1 class="display-5 fw-bold">Summer Sale Collection</h1>
+                <p class="lead">Discover the latest trends with free shipping on orders over $80.</p>
+                <a class="btn btn-primary btn-lg" href="#products">Shop Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center hero-overlay" style="background-image:url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1500&q=80');">
+          <div class="container text-white">
+            <div class="row">
+              <div class="col-lg-7">
+                <h1 class="display-5 fw-bold">New Arrivals for Your Home</h1>
+                <p class="lead">Upgrade your space with smart, stylish products designed for modern living.</p>
+                <a class="btn btn-primary btn-lg" href="#products">Explore Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center hero-overlay" style="background-image:url('https://images.unsplash.com/photo-1510414696678-2415ad8474aa?auto=format&fit=crop&w=1500&q=80');">
+          <div class="container text-white">
+            <div class="row">
+              <div class="col-lg-7">
+                <h1 class="display-5 fw-bold">Exclusive Deals Every Week</h1>
+                <p class="lead">Shop limited-time offers on best-selling gadgets and accessories.</p>
+                <a class="btn btn-primary btn-lg" href="#products">View Deals</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </section>
+
+  <section class="py-5" id="products">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <h2 class="fw-bold">Featured Products</h2>
+          <p class="text-muted">High-quality picks for your daily style and home essentials.</p>
+        </div>
+        <a href="#" class="btn btn-outline-primary">View All Products</a>
+      </div>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 position-relative">
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Sale</span>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Product 1">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Modern Lamp</h5>
+              <p class="card-text text-muted mb-4">Minimal design for a bright workspace.</p>
+              <div class="mt-auto">
+                <p class="h5 text-primary">$59</p>
+                <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#quickView1">Xem nhanh</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 position-relative">
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Sale</span>
+            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Product 2">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Wireless Headphones</h5>
+              <p class="card-text text-muted mb-4">Comfortable sound for every moment.</p>
+              <div class="mt-auto">
+                <p class="h5 text-primary">$89</p>
+                <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#quickView2">Xem nhanh</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 position-relative">
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Sale</span>
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Product 3">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Smart Watch</h5>
+              <p class="card-text text-muted mb-4">Track your day with elegant style.</p>
+              <div class="mt-auto">
+                <p class="h5 text-primary">$129</p>
+                <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#quickView3">Xem nhanh</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100 position-relative">
+            <span class="badge bg-danger position-absolute top-0 end-0 m-3">Sale</span>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Product 4">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Cozy Throw</h5>
+              <p class="card-text text-muted mb-4">Soft texture for every living room.</p>
+              <div class="mt-auto">
+                <p class="h5 text-primary">$39</p>
+                <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#quickView4">Xem nhanh</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-light py-5" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" class="img-fluid rounded-3 shadow-sm" alt="About shop">
+        </div>
+        <div class="col-lg-6">
+          <h2 class="fw-bold">Designed for modern living</h2>
+          <p class="text-muted">ShopWave delivers premium products and seamless shopping experience for customers who want quality and style.</p>
+          <ul class="list-unstyled">
+            <li class="mb-2"><strong>Fast delivery</strong> with easy tracking.</li>
+            <li class="mb-2"><strong>Secure payments</strong> and buyer protection.</li>
+            <li class="mb-2"><strong>Curated collections</strong> updated weekly.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-bg py-5" id="contact">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <h5 class="fw-bold">ShopWave</h5>
+          <p class="text-muted">Your daily destination for stylish home and lifestyle products.</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 class="fw-bold">Company</h6>
+          <ul class="list-unstyled text-muted">
+            <li><a href="#" class="text-decoration-none text-muted">About</a></li>
+            <li><a href="#" class="text-decoration-none text-muted">Careers</a></li>
+            <li><a href="#" class="text-decoration-none text-muted">Press</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h6 class="fw-bold">Support</h6>
+          <ul class="list-unstyled text-muted">
+            <li><a href="#" class="text-decoration-none text-muted">Help Center</a></li>
+            <li><a href="#" class="text-decoration-none text-muted">Shipping</a></li>
+            <li><a href="#" class="text-decoration-none text-muted">Returns</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-lg-3">
+          <h6 class="fw-bold">Contact</h6>
+          <p class="text-muted mb-1">Email: support@shopwave.com</p>
+          <p class="text-muted">Phone: +84 123 456 789</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="quickView1" tabindex="-1" aria-labelledby="quickView1Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quickView1Label">Modern Lamp</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded" alt="Lamp"></div>
+          <div class="col-md-6">
+            <p class="text-muted">A sleek minimalist lamp that adds warm ambiance to any modern interior.</p>
+            <p class="fw-bold h4 text-primary">$59</p>
+            <p class="mb-3">Free shipping on orders over $80. Includes easy setup and energy-efficient LED bulb.</p>
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="quickView2" tabindex="-1" aria-labelledby="quickView2Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quickView2Label">Wireless Headphones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6"><img src="https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded" alt="Headphones"></div>
+          <div class="col-md-6">
+            <p class="text-muted">Premium sound quality with soft ear cushions and long-lasting battery life.</p>
+            <p class="fw-bold h4 text-primary">$89</p>
+            <p class="mb-3">Bluetooth 5.2, noise isolation, and comfortable design for all-day wear.</p>
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="quickView3" tabindex="-1" aria-labelledby="quickView3Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quickView3Label">Smart Watch</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6"><img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded" alt="Smart Watch"></div>
+          <div class="col-md-6">
+            <p class="text-muted">Track your fitness, notifications, and sleep with a stylish touchscreen watch.</p>
+            <p class="fw-bold h4 text-primary">$129</p>
+            <p class="mb-3">Includes heart rate monitor, water resistance, and custom watch faces.</p>
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="quickView4" tabindex="-1" aria-labelledby="quickView4Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quickView4Label">Cozy Throw</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-md-6"><img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=900&q=80" class="img-fluid rounded" alt="Throw"></div>
+          <div class="col-md-6">
+            <p class="text-muted">A warm, textured throw perfect for cozy evenings and relaxing at home.</p>
+            <p class="fw-bold h4 text-primary">$39</p>
+            <p class="mb-3">Soft and machine washable with a beautiful neutral tone that fits any decor.</p>
+            <button class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qyd9r7Fo1ZkHqJ56mH0+PVa4IR9W9wc/0U5v5D5jHfXyF1uR5FW9VAFkE9QpOCfo" crossorigin="anonymous"></script>
+</body>
+</html>
