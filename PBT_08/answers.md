@@ -112,3 +112,42 @@ copy.specs.ram = 16;
 console.log(product.specs.ram); // 16
 ```
 → `product.specs` cũng bị thay đổi vì `specs` vẫn là cùng một object tham chiếu.
+
+Câu C1:
+Refactor bằng `filter`, `map`, `sort`, arrow function:
+```javascript
+const processOrders = (orders) =>
+  orders
+    .filter(({ status, total }) => status === 'completed' && total > 100000)
+    .map(({ id, customer, total }) => ({ id, customer, total, discount: total * 0.1, finalTotal: total * 0.9 }))
+    .sort((a, b) => b.finalTotal - a.finalTotal);
+```
+
+Câu C2:
+```javascript
+const miniArray = {
+  map(arr, fn) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      result.push(fn(arr[i], i, arr));
+    }
+    return result;
+  },
+  filter(arr, fn) {
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (fn(arr[i], i, arr)) {
+        result.push(arr[i]);
+      }
+    }
+    return result;
+  },
+  reduce(arr, fn, initialValue) {
+    let accumulator = initialValue;
+    for (let i = 0; i < arr.length; i++) {
+      accumulator = fn(accumulator, arr[i], i, arr);
+    }
+    return accumulator;
+  }
+};
+```
