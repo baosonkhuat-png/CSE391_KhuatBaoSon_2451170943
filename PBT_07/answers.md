@@ -79,3 +79,46 @@ var html = `<div class="card">
     <span>Giá: ${price}đ</span>
 </div>`;
 ```
+
+Câu C1:
+Các lỗi và sửa:
+1. Thiếu `;` ở cuối `return` và phép gán `var giamGia...` 
+2. `giaBan` có thể là chuỗi nên nên chuyển sang số trước khi tính.
+3. `if (giaSauGiam = 0)` dùng `=` thay vì `===`; điều này gán giá trị 0 cho `giaSauGiam` và luôn trả về falsey.
+4. `const gia = tinhGiaGiamGia("100000", 20)` truyền chuỗi thay vì số; cần ép `Number`.
+5. `phanTramGiam > 100` đúng, nhưng `giaBan` nếu không phải số cần kiểm tra.
+6. Vòng lặp `for (var i...)` với `setTimeout`: `var` có phạm vi function, nên khi callback chạy, `i` đã là 5. Vì vậy nó in `Item 5` 5 lần.
+→ Sửa: dùng `let i = 0` hoặc tạo closure.
+
+Sửa lỗi:
+```javascript
+function tinhGiaGiamGia(giaBan, phanTramGiam) {
+    const gia = Number(giaBan);
+    if (!Number.isFinite(gia)) {
+        return "Lỗi: Giá bán phải là số";
+    }
+
+    if (phanTramGiam < 0 || phanTramGiam > 100) {
+        return "Phần trăm giảm không hợp lệ";
+    }
+
+    const giamGia = gia * phanTramGiam / 100;
+    const giaSauGiam = gia - giamGia;
+
+    if (giaSauGiam === 0) {
+        console.log("Sản phẩm miễn phí!");
+    }
+
+    return giaSauGiam;
+}
+```
+
+Sửa vòng lặp:
+```javascript
+for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+        console.log("Item " + i);
+    }, 1000);
+}
+```
+→ Giải thích lỗi ẩn với `var`: `var` không có block scope, nên biến `i` dùng chung trong tất cả callback. Khi `setTimeout` thực thi, `i` đã tăng lên 5.
