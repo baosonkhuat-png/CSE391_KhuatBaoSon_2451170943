@@ -1,4 +1,4 @@
-jâu A1:
+Câu A1:
 
 | Kích thước | < 768px | 768px - 991px | ≥ 992px |
 |------------|---------|---------------|---------|
@@ -19,3 +19,14 @@ Câu A2:
 - `.container`: chiều rộng cố định và responsive, thay đổi ở từng breakpoint.
 - `.container-fluid`: luôn chiếm 100% chiều ngang màn hình.
 - `.container-md`: cố định từ breakpoint `md` trở lên, nhưng fluid ở kích thước nhỏ hơn.
+
+Câu C1:
+1. Đổi màu `$primary` sang `#E63946`: dùng Bootstrap Sass source, hoặc cấu hình công cụ build như `npm` + `sass`. Sửa file `_variables.scss` hoặc file Sass tùy chỉnh của dự án, gán `$primary: #E63946;` trước khi import `bootstrap.scss`, rồi biên dịch lại thành CSS.
+2. Không nên override trực tiếp `.btn-primary { background: red; }` vì cách đó làm mất lợi thế hệ thống biến của Bootstrap, giảm tính nhất quán và khó bảo trì. Dùng Sass variables giúp thay đổi chủ đề toàn cục và giữ được các lớp Bootstrap khác hoạt động đúng.
+
+Câu C2:
+- CSS thuần để tạo navbar responsive và product card: cần viết nhiều dòng CSS hơn, tự định nghĩa breakpoint, padding, layout và trạng thái hover.
+- Bootstrap version: ít dòng code hơn, nhanh phát triển hơn, chỉ cần dùng class có sẵn.
+- Khả năng tùy biến: CSS thuần linh hoạt nhất nhưng dễ gây trùng lặp; Bootstrap nhanh và nhất quán nhưng đôi khi giới hạn khi muốn thiết kế hoàn toàn độc đáo.
+- Khi nên dùng Bootstrap: khi cần triển khai nhanh UI chuẩn, dashboard, landing page doanh nghiệp, prototype.
+- Khi không nên dùng Bootstrap: khi cần thiết kế độc nhất, hiệu năng tối ưu cho ứng dụng nhỏ, hoặc khi muốn nhàm lại cấu trúc HTML quá nặng với class.
