@@ -72,3 +72,94 @@ Lệnh biên dịch SCSS:
 ```bash
 sass scss/style.scss scss/style.css
 ```
+Câu C1:
+Trang mẫu: Tiki
+1. Mobile (375px)
+- Navigation: chuyển sang hamburger / menu thu gọn, thanh tìm kiếm nằm nổi bật, icon giỏ hàng và thông báo.
+- Grid content: thường 1 cột cho các section lớn, hoặc 2 cột nhỏ cho danh sách sản phẩm tùy trang.
+- Elements ẩn: sidebar lọc, nhiều menu phụ, banner quảng cáo lớn, một số link footer mở rộng.
+- Font size: body text nhỏ hơn, heading nhỏ hơn, tổng thể hiển thị gọn hơn.
+2. Tablet (768px)
+- Navigation: vẫn là thanh trên cùng, menu xuất hiện đầy đủ hơn nhưng vẫn gọn, có thể có dropdown/slide.
+- Grid content: 2 cột hoặc 3 cột cho danh sách sản phẩm, phần hàng hóa có nhiều cột hơn mobile.
+- Elements ẩn: một vài quảng cáo phụ và banner lớn vẫn có thể ẩn, sidebar có thể chuyển thành section trên cùng.
+- Font size: hơi lớn hơn mobile, khoảng cách tăng nhẹ.
+3. Desktop (1440px)
+- Navigation: full header với menu ngang, nhiều mục danh mục, thanh tìm kiếm rộng, avatar/giỏ hàng, thông báo.
+- Grid content: thường 4-5 cột sản phẩm, nhiều block cùng hiển thị cạnh nhau như tin khuyến mãi + danh mục + sản phẩm.
+- Elements ẩn: rất ít, đa số menu và banner đều hiển thị.
+- Font size: lớn hơn so với mobile/tablet, tiêu đề rõ ràng, khoảng cách rộng hơn.
+
+4. Media queries thường dùng:
+- `@media (max-width: 768px)` hoặc `@media (min-width: 768px)` để chuyển layout.
+- `@media (max-width: 576px)` để tối ưu mobile.
+
+Câu C2:
+Yêu cầu layout thiết kế trang Đặt bàn nhà hàng.
+1. Mobile
+- Header: logo ở trái, số điện thoại đặt bàn ở phải hoặc dưới logo.
+- Hero image: chiếm toàn màn hình ngang, hiển thị full-width.
+- Form đặt bàn: nằm ngay dưới hero.
+- Grid 6 ảnh món ăn: hiển thị 1 cột, mỗi ảnh full-width.
+- Bản đồ Google Maps: nằm dưới form và gallery.
+- Footer: ở cuối trang.
+Ẩn trên mobile: menu phức tạp, sidebar lọc, nội dung quảng cáo phụ. Form đặt bàn phải nằm ngay dưới hero để dễ thao tác.
+[ HEADER ]
+[ HERO IMAGE ]
+[ BOOKING FORM ]
+[ GALLERY IMG 1 ]
+[ GALLERY IMG 2 ]
+[ GALLERY IMG 3 ]
+[ GALLERY IMG 4 ]
+[ GALLERY IMG 5 ]
+[ GALLERY IMG 6 ]
+[ GOOGLE MAP ]
+[ FOOTER ]
+
+2. Tablet
+- Header: logo + số điện thoại vẫn trên một hàng, có thể mở rộng thêm menu đơn giản.
+- Hero image: vẫn để rộng, cao nhưng không chiếm quá nhiều.
+- Grid ảnh món ăn: 2 cột.
+- Form đặt bàn: có thể nằm dưới hero hoặc bên cạnh hero trong một section 2 cột nhẹ.
+- Bản đồ: nằm sau gallery hoặc nếu đủ rộng thì bên cạnh form với layout 2 cột.
+- Footer: vẫn ở dưới.
+- Trên tablet, gallery nên để 2 cột để tận dụng không gian mà vẫn giữ dễ đọc.
+[ HEADER ]
+[ HERO IMAGE ]
+[ BOOKING FORM ]
+[ GALLERY IMG 1 | IMG 2 ]
+[ GALLERY IMG 3 | IMG 4 ]
+[ GALLERY IMG 5 | IMG 6 ]
+[ GOOGLE MAP ]
+[ FOOTER ]
+
+3. Desktop
+- Header: nhiều khoảng trắng, logo trái, số điện thoại đặt bàn phải, có thể thêm menu ngang.
+- Hero image: chiếm full-width, nội dung text có thể căn trái/phải.
+- Grid ảnh món ăn: 3 cột.
+- Bản đồ: có thể nằm bên dưới gallery, hoặc trên desktop bố cục 2 cột với form.
+- Footer: full-width.
+- Desktop nên có layout 2-3 cột, form có thể hiển thị như sidebar hoặc một phần bên phải nếu layout phù hợp.
+[ HEADER ]
+[ HERO IMAGE ]
+[ BOOKING FORM | GALLERY 3-COLUMN ]
+[ GOOGLE MAP ]
+[ FOOTER ]
+
+
+4. CSS skeleton mobile-first:
+```css
+body { margin: 0; font-family: Arial, sans-serif; }
+.container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+.header, .hero, .gallery, .booking-form, .map, .footer { margin-bottom: 24px; }
+.gallery { display: grid; grid-template-columns: 1fr; gap: 16px; }
+
+@media (min-width: 768px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .layout-two-col { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+```
