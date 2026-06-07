@@ -1,0 +1,137 @@
+.page-shell {
+  background: $background-color;
+  color: $text-color;
+  font-family: $font-primary;
+  min-height: 100vh;
+  padding: $spacing-lg $spacing-md;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  @include flex-center;
+  justify-content: space-between;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $border-color;
+
+  .brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    text-decoration: none;
+  }
+
+  .nav {
+    display: none;
+    gap: $spacing-md;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+}
+
+.product-grid {
+  display: grid;
+  gap: $spacing-lg;
+  grid-template-columns: 1fr;
+
+  .card {
+    background: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: $radius;
+    overflow: hidden;
+    @include card-shadow;
+
+    &:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+    }
+
+    .card-image {
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+    }
+
+    .card-body {
+      padding: $spacing-md;
+
+      .card-title {
+        margin: 0 0 $spacing-sm;
+        font-size: 1.1rem;
+      }
+
+      .card-price {
+        color: $primary-color;
+        font-weight: 700;
+        margin-bottom: $spacing-md;
+      }
+
+      .card-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: $spacing-sm $spacing-md;
+        border: none;
+        border-radius: 999px;
+        background: $secondary-color;
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .card-button:hover {
+        background: darken($secondary-color, 8%);
+        transform: scale(1.03);
+      }
+    }
+
+    &.featured {
+      border-color: $accent-color;
+    }
+  }
+}
+
+.product-summary {
+  background: $surface-color;
+  border: 1px solid $border-color;
+  border-radius: $radius;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+}
+
+@include respond-to(tablet) {
+  .header {
+    .nav {
+      display: flex;
+    }
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include respond-to(desktop) {
+  .page-shell {
+    padding: $spacing-lg 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

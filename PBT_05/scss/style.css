@@ -1,0 +1,137 @@
+.page-shell {
+  background: #f8fafc;
+  color: #111827;
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 32px 16px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header .brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.header .nav {
+  display: none;
+  gap: 16px;
+}
+
+.header .nav a {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.product-grid {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+.product-grid .card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-grid .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+}
+
+.product-grid .card .card-image {
+  overflow: hidden;
+}
+
+.product-grid .card .card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.product-grid .card .card-body {
+  padding: 16px;
+}
+
+.product-grid .card .card-body .card-title {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+}
+
+.product-grid .card .card-body .card-price {
+  color: #2563eb;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.product-grid .card .card-body .card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.product-grid .card .card-body .card-button:hover {
+  background: #d47f07;
+  transform: scale(1.03);
+}
+
+.product-grid .card.featured {
+  border-color: #10b981;
+}
+
+.product-summary {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .header .nav {
+    display: flex;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-shell {
+    padding: 32px 0;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

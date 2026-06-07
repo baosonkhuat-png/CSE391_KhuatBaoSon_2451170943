@@ -62,4 +62,13 @@ Câu A4:
      .button-secondary { @extend .button-primary; background: #ccc; }
      ```
 
-Trình duyệt không đọc được file `.scss` vì SCSS là tiền xử lý. Cần biên dịch SCSS thành CSS bằng công cụ như `sass` hoặc `node-sass`
+Trình duyệt không đọc được file `.scss` vì SCSS là tiền xử lý. Cần biên dịch SCSS thành CSS bằng công cụ như `sass` hoặc `node-sass`. Ví dụ về lệnh compile:
+```bash
+sass scss/style.scss scss/style.css
+```
+
+Câu B3: 
+Lệnh biên dịch SCSS:
+```bash
+sass scss/style.scss scss/style.css
+```
