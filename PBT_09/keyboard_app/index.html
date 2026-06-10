@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keyboard App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <h1>Keyboard Navigation Gallery</h1>
+      <p>Use arrow keys, numbers, Space, and Ctrl+K to control the app.</p>
+    </header>
+
+    <section class="viewer" aria-label="Image gallery">
+      <button id="prevBtn" class="nav-btn" aria-label="Previous image">←</button>
+      <div class="image-frame">
+        <img id="galleryImage" alt="Gallery image" />
+        <div id="imageLabel" class="image-label"></div>
+      </div>
+      <button id="nextBtn" class="nav-btn" aria-label="Next image">→</button>
+    </section>
+
+    <div class="controls" aria-label="Gallery controls">
+      <button id="playPauseBtn" type="button">Play</button>
+      <p>Press <kbd>Space</kbd> to play/pause, <kbd>←</kbd>/<kbd>→</kbd> to move, <kbd>1-9</kbd> to jump.</p>
+      <p>Press <kbd>Ctrl+K</kbd> to open command palette.</p>
+    </div>
+  </div>
+
+  <div id="commandPalette" class="palette hidden" role="dialog" aria-modal="true" aria-label="Command palette">
+    <div class="palette-card">
+      <input id="paletteInput" type="text" placeholder="Type a command..." aria-label="Command search" />
+      <ul id="commandList"></ul>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
